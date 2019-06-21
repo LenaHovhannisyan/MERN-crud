@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import Title from "./Title";
 const axios = require("axios");
 
@@ -8,7 +9,8 @@ class AddForm extends Component {
     this.state = {
       fullname: "",
       email: "",
-      password: ""
+      password: "",
+      fireRedirect: false
     };
   }
 
@@ -31,18 +33,28 @@ class AddForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
+    this.setState({
+      fireRedirect: true
+    });
+
     const Formdata = {
       fullname: this.state.fullname,
       email: this.state.email,
       password: this.state.password
     };
 
-    axios.post(`users/register`, { Formdata }).then(res => {
-      console.log(res);
-      console.log(res.data);
+    axios.post(`crudController/add_record`, { Formdata }).then(res => {
+      if (res.status === 404) {
+        console.log(res.statusText + "-" + res.status);
+      } else if (res.status === "500") {
+        console.log(res.statusText + "-" + res.status);
+      } else if (res.status === 200) {
+        console.log(res.statusText + "-" + res.status);
+      }
     });
   };
   render() {
+    const { fireRedirect } = this.state;
     return (
       <>
         <div style={{ paddingTop: "60px", paddingLeft: "50px" }}>
@@ -96,6 +108,7 @@ class AddForm extends Component {
               </div>
             </div>
           </form>
+          {fireRedirect && <Redirect to={"/"} />}
         </div>
       </>
     );

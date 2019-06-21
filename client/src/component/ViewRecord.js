@@ -2,8 +2,14 @@ import React, { Component } from "react";
 import Navbar from "../Navbar";
 import { Link } from "react-router-dom";
 import Title from "./Title";
+const axios = require("axios");
+
 class ViewRecord extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <>
