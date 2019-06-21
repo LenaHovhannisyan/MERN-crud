@@ -37,7 +37,7 @@ class AddForm extends Component {
       password: this.state.password
     };
 
-    axios.post(`api/users/register`, { Formdata }).then(res => {
+    axios.post(`users/register`, { Formdata }).then(res => {
       console.log(res);
       console.log(res.data);
     });
