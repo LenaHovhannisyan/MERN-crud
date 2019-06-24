@@ -10,9 +10,7 @@ class EditForm extends Component {
           <form>
             <div className="form-row align-items-center">
               <div className="col-auto">
-                <label className="sr-only" for="inlineFormInput">
-                  Full Name
-                </label>
+                <label className="sr-only">Full Name</label>
                 <input
                   type="text"
                   className="form-control mb-2"
@@ -21,9 +19,7 @@ class EditForm extends Component {
               </div>
 
               <div className="col-auto">
-                <label className="sr-only" for="inlineFormInputGroup">
-                  Username/Email
-                </label>
+                <label className="sr-only">Username/Email</label>
                 <div className="input-group mb-2">
                   <div className="input-group-prepend">
                     <div className="input-group-text">@</div>
@@ -36,9 +32,7 @@ class EditForm extends Component {
                 </div>
               </div>
               <div className="col-auto">
-                <label className="sr-only" for="inlineFormInput">
-                  Password
-                </label>
+                <label className="sr-only">Password</label>
                 <input
                   type="password"
                   className="form-control mb-2"

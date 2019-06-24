@@ -43,7 +43,7 @@ class AddForm extends Component {
       password: this.state.password
     };
 
-    axios.post(`crudController/add_record`, { Formdata }).then(res => {
+    axios.post(`CrudController/add_record`, { Formdata }).then(res => {
       if (res.status === 404) {
         console.log(res.statusText + "-" + res.status);
       } else if (res.status === "500") {

@@ -13,8 +13,11 @@ var myConnection = mysql.createConnection({
 myConnection.connect();
 
 router.get("/view_record", function(req, res, next) {
-  myConnection.query("select * from record", function(error, rows, fields) {
+  myConnection.query("select * from record", function(error, result, fields) {
     if (error) throw error;
+    // res.json(result);
+    res.send(JSON.stringify(result));
+    // console.log(result);
   });
 });
 
@@ -34,6 +37,15 @@ router.post("/add_record", function(req, res, next) {
   myConnection.query(inserQuery, function(err, result) {
     if (err) throw err;
     res.send("Record Successfully Inserted!");
+  });
+});
+
+router.post("/delete_record", function(req, res, next) {
+  var record_id = req.body.Formdata.deleteRecord;
+  var query = `delete FROM record where id=${record_id}`;
+  myConnection.query(query, function(error, results, fields) {
+    if (error) throw error;
+    res.redirect("http://localhost:3000/");
   });
 });
 
